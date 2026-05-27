@@ -13,7 +13,7 @@ export default function DashboardPage() {
       const token = localStorage.getItem("token")
 
       const response = await fetch(
-        "http://127.0.0.1:8000/recommend-teammates",
+        "https://ai-team-platform-e64i.onrender.com/recommend-teammates",
         {
           headers: {
             Authorization: `Bearer ${token}`
