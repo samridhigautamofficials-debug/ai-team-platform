@@ -1,13 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 
 export default function DashboardPage() {
 
   const [data, setData] = useState<any>(null)
-
-  const router = useRouter()
 
   useEffect(() => {
 
@@ -35,15 +32,6 @@ export default function DashboardPage() {
 
   }, [])
 
-  function handleLogout() {
-
-    localStorage.removeItem("token")
-
-    alert("Logged out successfully 🚀")
-
-    router.push("/login")
-  }
-
   return (
 
     <div
@@ -64,42 +52,20 @@ export default function DashboardPage() {
         Dashboard 🚀
       </h1>
 
-      <div
+      <a
+        href="/profile"
         style={{
-          display: "flex",
-          gap: "20px",
-          marginBottom: "30px"
+          display: "inline-block",
+          marginBottom: "30px",
+          padding: "12px 20px",
+          background: "#38bdf8",
+          borderRadius: "10px",
+          color: "white",
+          textDecoration: "none"
         }}
       >
-
-        <a
-          href="/profile"
-          style={{
-            padding: "12px 20px",
-            background: "#38bdf8",
-            borderRadius: "10px",
-            color: "white",
-            textDecoration: "none"
-          }}
-        >
-          Update Profile
-        </a>
-
-        <button
-          onClick={handleLogout}
-          style={{
-            padding: "12px 20px",
-            background: "#ef4444",
-            border: "none",
-            borderRadius: "10px",
-            color: "white",
-            cursor: "pointer"
-          }}
-        >
-          Logout
-        </button>
-
-      </div>
+        Update Profile
+      </a>
 
       <h2
         style={{
