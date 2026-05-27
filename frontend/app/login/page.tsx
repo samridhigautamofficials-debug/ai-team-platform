@@ -15,7 +15,7 @@ export default function LoginPage() {
     try {
 
       const response = await fetch(
-        "http://127.0.0.1:8000/login",
+        "https://ai-team-platform-e64i.onrender.com/login",
         {
           method: "POST",
           headers: {

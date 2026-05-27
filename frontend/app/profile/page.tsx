@@ -14,7 +14,7 @@ export default function ProfilePage() {
     const token = localStorage.getItem("token")
 
     const response = await fetch(
-      "http://127.0.0.1:8000/update-profile",
+      "https://ai-team-platform-e64i.onrender.com/update-profile",
       {
         method: "PUT",
         headers: {
@@ -48,7 +48,13 @@ export default function ProfilePage() {
       }}
     >
 
-      <h1>Update Profile 🚀</h1>
+      <h1
+        style={{
+          marginBottom: "20px"
+        }}
+      >
+        Update Profile 🚀
+      </h1>
 
       <input
         placeholder="Skills"
@@ -58,7 +64,9 @@ export default function ProfilePage() {
           display: "block",
           marginBottom: "15px",
           padding: "12px",
-          width: "300px"
+          width: "300px",
+          borderRadius: "10px",
+          border: "none"
         }}
       />
 
@@ -70,7 +78,9 @@ export default function ProfilePage() {
           display: "block",
           marginBottom: "15px",
           padding: "12px",
-          width: "300px"
+          width: "300px",
+          borderRadius: "10px",
+          border: "none"
         }}
       />
 
@@ -82,7 +92,9 @@ export default function ProfilePage() {
           display: "block",
           marginBottom: "15px",
           padding: "12px",
-          width: "300px"
+          width: "300px",
+          borderRadius: "10px",
+          border: "none"
         }}
       />
 
@@ -95,7 +107,9 @@ export default function ProfilePage() {
           marginBottom: "15px",
           padding: "12px",
           width: "300px",
-          height: "120px"
+          height: "120px",
+          borderRadius: "10px",
+          border: "none"
         }}
       />
 
@@ -106,7 +120,8 @@ export default function ProfilePage() {
           background: "#38bdf8",
           border: "none",
           borderRadius: "10px",
-          color: "white"
+          color: "white",
+          cursor: "pointer"
         }}
       >
         Save Profile
