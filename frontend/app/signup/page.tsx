@@ -12,6 +12,7 @@ export default function SignupPage() {
   const [password, setPassword] = useState("")
 
   async function handleSignup() {
+
     try {
 
       const response = await fetch(
@@ -37,7 +38,7 @@ export default function SignupPage() {
         alert("Signup Successful 🚀")
         router.push("/login")
       } else {
-        alert("Signup Failed ❌")
+        alert(data.error || data.detail || "Signup Failed ❌")
       }
 
     } catch (error) {
@@ -47,84 +48,39 @@ export default function SignupPage() {
   }
 
   return (
+    <div style={{ minHeight: "100vh", background: "#0f172a", display: "flex", justifyContent: "center", alignItems: "center" }}>
 
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0f172a",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-
-      <div
-        style={{
-          background: "#1e293b",
-          padding: "40px",
-          borderRadius: "20px",
-          width: "350px"
-        }}
-      >
+      <div style={{ background: "#1e293b", padding: "40px", borderRadius: "20px", width: "350px" }}>
 
         <h1 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
           Signup 🚀
         </h1>
 
         <input
-          type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "none"
-          }}
+          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
         />
 
         <input
-          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "none"
-          }}
+          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
         />
 
         <input
-          type="password"
           placeholder="Password"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "none"
-          }}
+          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
         />
 
         <button
           onClick={handleSignup}
-          style={{
-            width: "100%",
-            padding: "12px",
-            background: "#38bdf8",
-            border: "none",
-            borderRadius: "10px",
-            color: "white",
-            cursor: "pointer",
-            fontSize: "16px"
-          }}
+          style={{ width: "100%", padding: "12px", background: "#38bdf8", color: "white" }}
         >
           Signup
         </button>

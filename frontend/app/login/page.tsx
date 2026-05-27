@@ -30,103 +30,53 @@ export default function LoginPage() {
 
       const data = await response.json()
 
-      console.log(data)
+      console.log("LOGIN RESPONSE:", data)
 
-      if (data.access_token) {
+      if (response.ok) {
 
-        localStorage.setItem(
-          "token",
-          data.access_token
-        )
+        localStorage.setItem("token", data.access_token)
 
         alert("Login Successful 🚀")
 
         router.push("/dashboard")
 
       } else {
-
-        alert("Invalid credentials ❌")
+        alert(data.error || data.detail || "Login Failed ❌")
       }
 
     } catch (error) {
-
-      console.log(error)
-
-      alert("Something went wrong ❌")
+      console.log("ERROR:", error)
+      alert("Server not responding ❌")
     }
   }
 
   return (
+    <div style={{ minHeight: "100vh", background: "#0f172a", display: "flex", justifyContent: "center", alignItems: "center" }}>
 
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0f172a",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
+      <div style={{ background: "#1e293b", padding: "40px", borderRadius: "20px", width: "350px" }}>
 
-      <div
-        style={{
-          background: "#1e293b",
-          padding: "40px",
-          borderRadius: "20px",
-          width: "350px"
-        }}
-      >
-
-        <h1
-          style={{
-            color: "white",
-            marginBottom: "20px",
-            textAlign: "center"
-          }}
-        >
+        <h1 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
           Login 🚀
         </h1>
 
         <input
-          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "none"
-          }}
+          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
         />
 
         <input
-          type="password"
           placeholder="Password"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "10px",
-            border: "none"
-          }}
+          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
         />
 
         <button
           onClick={handleLogin}
-          style={{
-            width: "100%",
-            padding: "12px",
-            background: "#38bdf8",
-            border: "none",
-            borderRadius: "10px",
-            color: "white",
-            cursor: "pointer",
-            fontSize: "16px"
-          }}
+          style={{ width: "100%", padding: "12px", background: "#38bdf8", color: "white" }}
         >
           Login
         </button>
