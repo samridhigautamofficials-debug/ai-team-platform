@@ -12,35 +12,37 @@ export default function SignupPage() {
   const [password, setPassword] = useState("")
 
   async function handleSignup() {
+    try {
 
-    const response = await fetch(
-      "https://ai-team-platform-e64i.onrender.com/signup",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          password
-        })
+      const response = await fetch(
+        "https://ai-team-platform-e64i.onrender.com/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username,
+            email,
+            password
+          })
+        }
+      )
+
+      const data = await response.json()
+
+      console.log("SIGNUP RESPONSE:", data)
+
+      if (response.ok) {
+        alert("Signup Successful 🚀")
+        router.push("/login")
+      } else {
+        alert("Signup Failed ❌")
       }
-    )
 
-    const data = await response.json()
-
-    console.log(data)
-
-    if (data.id) {
-
-      alert("Signup Successful 🚀")
-
-      router.push("/login")
-
-    } else {
-
-      alert("Signup Failed ❌")
+    } catch (error) {
+      console.log("ERROR:", error)
+      alert("Server not responding ❌")
     }
   }
 
@@ -65,13 +67,7 @@ export default function SignupPage() {
         }}
       >
 
-        <h1
-          style={{
-            color: "white",
-            textAlign: "center",
-            marginBottom: "20px"
-          }}
-        >
+        <h1 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
           Signup 🚀
         </h1>
 
