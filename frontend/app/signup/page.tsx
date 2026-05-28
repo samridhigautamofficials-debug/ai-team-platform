@@ -13,80 +13,60 @@ export default function SignupPage() {
 
   async function handleSignup() {
 
-    try {
-
-      const response = await fetch(
-        "https://ai-team-platform-e64i.onrender.com/signup",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            username,
-            email,
-            password
-          })
-        }
-      )
-
-      const data = await response.json()
-
-      console.log("SIGNUP RESPONSE:", data)
-
-      if (response.ok) {
-        alert("Signup Successful 🚀")
-        router.push("/login")
-      } else {
-        alert(data.error || data.detail || "Signup Failed ❌")
+    const response = await fetch(
+      "https://ai-team-platform-e64i.onrender.com/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        })
       }
+    )
 
-    } catch (error) {
-      console.log("ERROR:", error)
-      alert("Server not responding ❌")
+    const data = await response.json()
+
+    console.log(data)
+
+    if (response.ok) {
+      alert("Signup Successful 🚀")
+      router.push("/login")
+    } else {
+      alert(data.error || "Signup Failed ❌")
     }
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0f172a", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div style={{
+      minHeight: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "#0f172a"
+    }}>
 
-      <div style={{ background: "#1e293b", padding: "40px", borderRadius: "20px", width: "350px" }}>
+      <div style={{ background: "#1e293b", padding: "30px", borderRadius: "10px" }}>
 
-        <h1 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
-          Signup 🚀
-        </h1>
+        <h1 style={{ color: "white" }}>Signup</h1>
 
-        <input
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
-        />
+        <input placeholder="Username" value={username}
+          onChange={(e) => setUsername(e.target.value)} />
 
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
-        />
+        <input placeholder="Email" value={email}
+          onChange={(e) => setEmail(e.target.value)} />
 
-        <input
-          placeholder="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ width: "100%", padding: "12px", marginBottom: "15px" }}
-        />
+        <input placeholder="Password" type="password" value={password}
+          onChange={(e) => setPassword(e.target.value)} />
 
-        <button
-          onClick={handleSignup}
-          style={{ width: "100%", padding: "12px", background: "#38bdf8", color: "white" }}
-        >
+        <button onClick={handleSignup}>
           Signup
         </button>
 
       </div>
-
     </div>
   )
 }
