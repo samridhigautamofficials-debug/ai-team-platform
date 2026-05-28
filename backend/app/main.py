@@ -4,12 +4,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes.auth import router as auth_router
 from app.database import engine, Base
 
+# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 # -------------------------
-# SINGLE CLEAN CORS SETUP
+# CORS (IMPORTANT FIX)
 # -------------------------
 app.add_middleware(
     CORSMiddleware,
