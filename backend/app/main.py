@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routes.auth import router as auth_router
 from app.database import engine, Base
 
-# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -17,14 +16,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# -------------------------
-# ROUTES
-# -------------------------
 app.include_router(auth_router)
 
-# -------------------------
-# TEST ROUTE
-# -------------------------
 @app.get("/")
 def home():
-    return {"message": "AI Team Platform Backend Running 🚀"}
+    return {
+        "message": "AI Team Platform Backend Running 🚀"
+    }
