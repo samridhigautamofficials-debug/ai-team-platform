@@ -9,16 +9,10 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# -------------------------
-# CORS (IMPORTANT FIX)
-# -------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://ai-team-platform-eight.vercel.app"
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
