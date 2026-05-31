@@ -1,140 +1,135 @@
-"use client"
-
-import { useEffect, useState } from "react"
-
 export default function DashboardPage() {
-
-  const [data, setData] = useState<any>(null)
-
-  useEffect(() => {
-
-    async function getRecommendations() {
-
-      const token = localStorage.getItem("token")
-
-      const response = await fetch(
-        "https://ai-team-platform-e64i.onrender.com/recommend-teammates",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      )
-
-      const result = await response.json()
-
-      console.log(result)
-
-      setData(result)
+  const teammates = [
+    {
+      name: "Rahul",
+      skills: "React, Next.js, Node.js",
+      experience: "2 Years",
+      match: "95%"
+    },
+    {
+      name: "Priya",
+      skills: "UI/UX, Figma",
+      experience: "3 Years",
+      match: "90%"
+    },
+    {
+      name: "Aman",
+      skills: "AI, Python, ML",
+      experience: "4 Years",
+      match: "98%"
     }
-
-    getRecommendations()
-
-  }, [])
+  ]
 
   return (
-
     <div
       style={{
         minHeight: "100vh",
         background: "#0f172a",
         color: "white",
-        padding: "40px"
+        padding: "40px",
       }}
     >
-
-      <h1
+      <div
         style={{
-          fontSize: "40px",
-          marginBottom: "20px"
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "40px",
         }}
       >
-        Dashboard 🚀
-      </h1>
+        <h1>AI Team Platform 🚀</h1>
 
-      <a
-        href="/profile"
+        <button
+          style={{
+            background: "#ef4444",
+            color: "white",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "10px",
+            cursor: "pointer",
+          }}
+        >
+          Logout
+        </button>
+      </div>
+
+      <h2>Welcome Back 👋</h2>
+
+      <p
         style={{
-          display: "inline-block",
+          color: "#94a3b8",
           marginBottom: "30px",
-          padding: "12px 20px",
-          background: "#38bdf8",
-          borderRadius: "10px",
-          color: "white",
-          textDecoration: "none"
         }}
       >
-        Update Profile
-      </a>
+        AI recommended teammates for you
+      </p>
 
-      <h2
+      <input
+        placeholder="Search teammates..."
         style={{
-          marginBottom: "20px"
+          width: "100%",
+          maxWidth: "400px",
+          padding: "12px",
+          borderRadius: "10px",
+          border: "none",
+          marginBottom: "30px",
+        }}
+      />
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "20px",
         }}
       >
-        Recommended Teammates
-      </h2>
+        {teammates.map((user, index) => (
+          <div
+            key={index}
+            style={{
+              background: "#1e293b",
+              padding: "20px",
+              borderRadius: "15px",
+              width: "300px",
+              boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+            }}
+          >
+            <h3>{user.name}</h3>
 
-      {
-        data?.recommended_teammates?.length > 0 ? (
+            <p>
+              <strong>Skills:</strong> {user.skills}
+            </p>
 
-          data.recommended_teammates.map(
-            (user: any, index: number) => (
+            <p>
+              <strong>Experience:</strong> {user.experience}
+            </p>
 
-              <div
-                key={index}
-                style={{
-                  background: "#1e293b",
-                  padding: "20px",
-                  borderRadius: "15px",
-                  marginBottom: "20px"
-                }}
-              >
+            <p
+              style={{
+                color: "#22c55e",
+                fontWeight: "bold",
+              }}
+            >
+              Match Score: {user.match}
+            </p>
 
-                <h2
-                  style={{
-                    color: "#38bdf8"
-                  }}
-                >
-                  {user.username}
-                </h2>
-
-                <p>
-                  <strong>Skills:</strong> {user.skills || "Not added"}
-                </p>
-
-                <p>
-                  <strong>Interests:</strong> {user.interests || "Not added"}
-                </p>
-
-                <p>
-                  <strong>Experience:</strong> {user.experience || "Not added"}
-                </p>
-
-                <p>
-                  <strong>Bio:</strong> {user.bio || "No bio"}
-                </p>
-
-                <p
-                  style={{
-                    marginTop: "10px",
-                    color: "#22c55e",
-                    fontWeight: "bold"
-                  }}
-                >
-                  Match Score: {user.score}
-                </p>
-
-              </div>
-            )
-          )
-
-        ) : (
-
-          <p>No teammate recommendations yet.</p>
-        )
-      }
-
+            <button
+              style={{
+                width: "100%",
+                marginTop: "10px",
+                background: "#38bdf8",
+                color: "white",
+                border: "none",
+                padding: "10px",
+                borderRadius: "10px",
+                cursor: "pointer",
+              }}
+            >
+              Connect
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

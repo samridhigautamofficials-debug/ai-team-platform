@@ -3,16 +3,54 @@ export default function HomePage() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#0f172a",
+        background: "linear-gradient(to bottom, #0f172a, #1e293b)",
         color: "white",
         padding: "40px",
         textAlign: "center",
       }}
     >
+      {/* Navbar */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "60px",
+        }}
+      >
+        <h2>AI Team Platform 🚀</h2>
+
+        <div>
+          <a
+            href="/login"
+            style={{
+              color: "white",
+              marginRight: "20px",
+              textDecoration: "none",
+              fontSize: "18px",
+            }}
+          >
+            Login
+          </a>
+
+          <a
+            href="/signup"
+            style={{
+              color: "#38bdf8",
+              textDecoration: "none",
+              fontSize: "18px",
+            }}
+          >
+            Signup
+          </a>
+        </div>
+      </div>
+
+      {/* Hero Section */}
       <h1
         style={{
-          fontSize: "60px",
-          marginBottom: "20px",
+          fontSize: "72px",
+          marginBottom: "10px",
         }}
       >
         AI Team Platform 🚀
@@ -20,18 +58,32 @@ export default function HomePage() {
 
       <p
         style={{
+          color: "#38bdf8",
+          fontSize: "20px",
+          fontWeight: "bold",
+          marginBottom: "30px",
+        }}
+      >
+        Build Winning Hackathon Teams with AI
+      </p>
+
+      <p
+        style={{
           fontSize: "22px",
           maxWidth: "700px",
           margin: "0 auto",
+          lineHeight: "1.6",
         }}
       >
         Find the best hackathon teammates using AI-powered matching
         based on skills, interests, and experience.
       </p>
 
+      {/* Buttons */}
       <div
         style={{
           marginTop: "40px",
+          marginBottom: "80px",
         }}
       >
         <a
@@ -43,6 +95,7 @@ export default function HomePage() {
             textDecoration: "none",
             borderRadius: "10px",
             marginRight: "15px",
+            fontSize: "18px",
           }}
         >
           Get Started
@@ -56,16 +109,18 @@ export default function HomePage() {
             color: "white",
             textDecoration: "none",
             borderRadius: "10px",
+            fontSize: "18px",
           }}
         >
           Login
         </a>
       </div>
 
+      {/* Features */}
       <h2
         style={{
-          marginTop: "80px",
-          marginBottom: "30px",
+          marginBottom: "40px",
+          fontSize: "40px",
         }}
       >
         Features
@@ -82,37 +137,55 @@ export default function HomePage() {
         <div
           style={{
             background: "#1e293b",
-            padding: "20px",
-            borderRadius: "15px",
-            width: "250px",
+            padding: "30px",
+            borderRadius: "20px",
+            width: "280px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
           }}
         >
-          <h3>🤖 AI Matching</h3>
-          <p>Find teammates based on skill compatibility.</p>
+          <h3 style={{ fontSize: "24px" }}>
+            🤖 AI Matching
+          </h3>
+
+          <p>
+            Find teammates based on skill compatibility and shared interests.
+          </p>
         </div>
 
         <div
           style={{
             background: "#1e293b",
-            padding: "20px",
-            borderRadius: "15px",
-            width: "250px",
+            padding: "30px",
+            borderRadius: "20px",
+            width: "280px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
           }}
         >
-          <h3>⚡ Fast Team Building</h3>
-          <p>Create strong hackathon teams quickly.</p>
+          <h3 style={{ fontSize: "24px" }}>
+            ⚡ Fast Team Building
+          </h3>
+
+          <p>
+            Build powerful hackathon teams within minutes.
+          </p>
         </div>
 
         <div
           style={{
             background: "#1e293b",
-            padding: "20px",
-            borderRadius: "15px",
-            width: "250px",
+            padding: "30px",
+            borderRadius: "20px",
+            width: "280px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
           }}
         >
-          <h3>🎯 Smart Recommendations</h3>
-          <p>Get ranked teammate suggestions instantly.</p>
+          <h3 style={{ fontSize: "24px" }}>
+            🎯 Smart Recommendations
+          </h3>
+
+          <p>
+            Receive ranked teammate suggestions powered by AI.
+          </p>
         </div>
       </div>
     </div>
